@@ -1,4 +1,4 @@
-package factorymethod;
+package creationalPatterns.factoryMethod;
 
 public enum CandyType {
     Lollipop,

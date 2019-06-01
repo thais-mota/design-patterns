@@ -1,4 +1,4 @@
-package factorymethod;
+package creationalPatterns.factoryMethod;
 
 public class Lollipop implements Candy { 
 
