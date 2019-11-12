@@ -6,7 +6,7 @@ public class DeliveryManPool {
 
     //TODO: set the max quantity of created objects
     
-    static DeliveryManPool deliveryManPool;
+    private static DeliveryManPool deliveryManPool;
     
     public static DeliveryManPool getIntance() {
         if(deliveryManPool == null) {
@@ -16,17 +16,23 @@ public class DeliveryManPool {
     }
     
     private ArrayList<DeliveryMan> deliveryManReusables; 
+    private int poolSize;
     
     private DeliveryManPool() {
         deliveryManReusables = new ArrayList();
+        poolSize = 5;
     }
     
     public DeliveryMan acquireDeliveryMan() {
-        if(deliveryManReusables.isEmpty()) {
+        if(deliveryManReusables.isEmpty() && poolSize > 0) {
+            poolSize--;
             DeliveryMan deliveryMan = new DeliveryMan();
             deliveryManReusables.add(deliveryMan);
         }
-        return deliveryManReusables.remove(0);
+        if(!deliveryManReusables.isEmpty()) {
+            return deliveryManReusables.remove(0);
+        }
+        return null;
     }
     
     public void releaseDeliveryMan(DeliveryMan deliveryMan) {

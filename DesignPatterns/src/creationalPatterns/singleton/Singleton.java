@@ -2,7 +2,7 @@ package creationalPatterns.singleton;
 
 public class Singleton {
     
-    static Singleton singleton;
+    private static Singleton singleton;
     
     private Singleton() { }
     
